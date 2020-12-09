@@ -1,0 +1,19 @@
+query Repositories {
+  viewer {
+    organizations(first: 100) {
+      nodes {
+        name
+      }
+      totalCount
+    }
+    repositories(first: 100) {
+      nodes {
+        id
+        name
+        owner {
+          login
+        }
+      }
+    }
+  }
+}

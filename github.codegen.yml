@@ -1,0 +1,31 @@
+schema:
+  - https://api.github.com/graphql:
+      headers:
+        Authorization: 'bearer ${GITHUB_TOKEN}'
+
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+
+generates:
+  github.generated.ts:
+    plugins:
+      - typescript
+
+  github.graphql:
+    plugins:
+      - schema-ast
+    config:
+      commentDescriptions: true
+
+  src:
+    documents: 'src/**/*.github.graphql'
+    preset: near-operation-file
+    presetConfig:
+      extension: .generated.ts
+      baseTypesPath: graphql.generated.ts
+    plugins:
+      - typescript-operations
+    config:
+      avoidOptionals:
+        field: true

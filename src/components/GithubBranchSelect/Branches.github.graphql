@@ -1,0 +1,13 @@
+query Branches($repositoryId: ID!) {
+  node(id: $repositoryId) {
+    ... on Repository {
+      id
+      refs(first: 100, refPrefix: "refs/heads/") {
+        nodes {
+          id
+          name
+        }
+      }
+    }
+  }
+}

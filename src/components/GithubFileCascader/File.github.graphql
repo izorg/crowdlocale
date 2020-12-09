@@ -1,0 +1,16 @@
+query File($repositoryId: ID!) {
+  node(id: $repositoryId) {
+    ... on Repository {
+      id
+      object(expression: "master:") {
+        ... on Tree {
+          id
+          entries {
+            name
+            type
+          }
+        }
+      }
+    }
+  }
+}

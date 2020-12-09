@@ -1,0 +1,8 @@
+/**/*.generated.ts
+/*-debug.log
+/.env
+/.graphqlconfig
+/.idea
+/dist
+/github.graphql
+/node_modules

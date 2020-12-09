@@ -1,0 +1,21 @@
+schema:
+  - 'github.graphql'
+  - 'src/**/*.github.graphql'
+
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+
+generates:
+  src:
+    documents: 'src/**/*.github.graphql'
+    preset: near-operation-file
+    presetConfig:
+      extension: .generated.ts
+      baseTypesPath: ../github.generated.ts
+    plugins:
+      - typescript-operations
+      - typescript-urql
+    config:
+      avoidOptionals:
+        field: true
